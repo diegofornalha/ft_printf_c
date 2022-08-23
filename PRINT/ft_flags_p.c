@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_flags_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dida-sil <dida-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 19:08:07 by dida-sil          #+#    #+#             */
-/*   Updated: 2022/07/01 09:20:17 by dida-sil         ###   ########.fr       */
+/*   Created: 2022/06/30 16:20:57 by dida-sil          #+#    #+#             */
+/*   Updated: 2022/07/04 18:49:42 by dida-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putstr(char *str)
+void	ft_flags_p(va_list ap, int *p)
 {
-  
-	while (*str != '\0')
-	{
-	  	ft_putchar(*str);
-   		str++;
-	}
+	unsigned long			print;
+
+	print = va_arg (ap, unsigned long);
+
+	ft_putchar('0');
+	ft_putchar('x');
+	*p = *p + 2;
+	ft_putaddress(print, p);
 }

@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_flags_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dida-sil <dida-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 07:50:19 by dida-sil          #+#    #+#             */
-/*   Updated: 2022/07/04 07:53:50 by dida-sil         ###   ########.fr       */
+/*   Created: 2022/06/30 16:47:41 by dida-sil          #+#    #+#             */
+/*   Updated: 2022/07/04 08:37:44 by dida-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putunbr(unsigned int n, int *p)
+void	ft_flags_x(va_list ap, int *p)
 {
-	if (n > 9)
-	{
-		ft_putunbr((n / 10), p);
-		ft_putunbr((n % 10), p);
-	}
-	else
-	{
-		*p = *p + 1;
-		ft_putchar(n + '0');
-	}
+	unsigned int print;
+
+	print = va_arg(ap, unsigned int);
+	ft_puthex(print, p);
 }

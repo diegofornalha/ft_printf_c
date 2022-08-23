@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putuhex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dida-sil <dida-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 15:55:39 by dida-sil          #+#    #+#             */
-/*   Updated: 2022/06/30 17:26:29 by dida-sil         ###   ########.fr       */
+/*   Created: 2022/06/30 19:08:07 by dida-sil          #+#    #+#             */
+/*   Updated: 2022/07/04 19:33:40 by dida-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putaddress(unsigned long n, int *p)
+void	ft_putuhexx(unsigned int n)
 {
-	if (n > 15)
+	if (n == 10)
+			ft_putchar('A');
+		if (n == 11)
+			ft_putchar('B');
+		if (n == 12)
+			ft_putchar('C');
+		if (n == 13)
+			ft_putchar('D');
+		if (n == 14)
+			ft_putchar('E');
+		if (n == 15)
+			ft_putchar('F');
+}
+
+void	ft_putuhex(unsigned int n, int *p)
+{
+	if(n > 15)
 	{
-		ft_putaddress((n / 16), p);
-		ft_putaddress((n % 16), p);
+		ft_putuhex(n / 16, p);
+		ft_putuhex(n % 16, p);
 	}
 	else if (n < 10)
 	{
@@ -27,11 +43,6 @@ void	ft_putaddress(unsigned long n, int *p)
 	else
 	{
 		*p = *p + 1;
-		n == 10 ? ft_putchar('a') : 0;
-		n == 11 ? ft_putchar('b') : 0;
-		n == 12 ? ft_putchar('c') : 0;
-		n == 13 ? ft_putchar('d') : 0;
-		n == 14 ? ft_putchar('e') : 0;
-		n == 15 ? ft_putchar('f') : 0;
+		ft_putuhexx(n);
 	}
 }

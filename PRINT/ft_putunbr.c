@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dida-sil <dida-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 16:24:33 by dida-sil          #+#    #+#             */
-/*   Updated: 2022/07/01 08:02:43 by dida-sil         ###   ########.fr       */
+/*   Created: 2022/07/04 07:50:19 by dida-sil          #+#    #+#             */
+/*   Updated: 2022/07/04 08:40:11 by dida-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n, int *p){
-    if (n < 0)
-    {
-        ft_putchar('-');
-        n = -n;
-    }
-    if (n >= 10)
-        ft_putnbr(n / 10, p);
-    ft_putchar(n % 10 + '0');
-    (*p)++;
+void	ft_putunbr(unsigned int n, int *p)
+{
+	if (n > 9)
+	{
+		ft_putunbr((n / 10), p);
+		ft_putunbr((n % 10), p);
+	}
+	else
+	{
+		*p = *p + 1;
+		ft_putchar(n + '0');
+	}
 }
